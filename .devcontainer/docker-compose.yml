@@ -6,7 +6,7 @@ services:
       - .env
     image: postgres
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - ../db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=$POSTGRES_DB
       - POSTGRES_USER=$POSTGRES_USER
@@ -14,10 +14,10 @@ services:
   web:
     env_file:
       - .env
-    build: .
+    build: ..
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./back:/code
+      - ../back:/code
     ports:
       - "8000:8000"
     depends_on:
